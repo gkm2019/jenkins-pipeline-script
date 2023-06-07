@@ -79,7 +79,8 @@ pipeline {
                                                     '''
                                               ]
                                              ]
-                                    ]
+                                    ],
+                                    [$class: 'StringParameterValue', name: 'service_name', value: "${JOB_NAME}"]
                             ])
                     ])
                 }

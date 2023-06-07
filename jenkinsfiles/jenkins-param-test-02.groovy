@@ -37,12 +37,12 @@ pipeline {
                                              [$class: 'GroovyScript',
                                               fallbackScript: [
                                                       classpath: [],
-                                                      sandbox: false,
+                                                      sandbox: true,
                                                       script: "return['Could not get Environment from Env Param']"
                                               ],
                                               script: [
                                                       classpath: [],
-                                                      sandbox: false,
+                                                      sandbox: true,
                                                       script: '''
                                                 if (Env.equals("dev")){
                                                     return["ami-sd2345sd", "ami-asdf245sdf", "ami-asdf3245sd"]
@@ -79,7 +79,27 @@ pipeline {
                                                     '''
                                               ]
                                              ]
-                                    ]
+                                    ],
+                                    string(
+                                            defaultValue: 'chewbacca',
+                                            name: 'service_name',
+                                            trim: true
+                                    ),
+                                    string(
+                                            defaultValue: 'chews',
+                                            name: 'stack',
+                                            trim: true
+                                    ),
+                                    string(
+                                            defaultValue: 'chews',
+                                            name: 'env',
+                                            trim: true
+                                    ),
+                                    string(
+                                            defaultValue: 'chewbacca-arm64',
+                                            name: 'base_ami_id',
+                                            trim: true
+                                    )
                             ])
                     ])
                 }
